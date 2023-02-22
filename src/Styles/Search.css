@@ -1,0 +1,23 @@
+.SearchContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 1vh;
+}
+
+.input {
+    width: 50%;
+    padding: 1rem;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.5;
+    font-size: 1rem;
+}
+
+.input:focus {
+    opacity: 1;
+    width: 80%;
+}
