@@ -20,6 +20,7 @@ export default function Home() {
 
 
     useEffect(() => {
+        if(weatherInfo.length) return
         navigator.permissions.query({ name: "geolocation" }).then(result => {
             if (result.state == "granted") {
                 navigator.geolocation.getCurrentPosition(getPosition)
@@ -44,7 +45,7 @@ export default function Home() {
 
     return (
         <>
-            <div style={{ position: "absolute", width: "90%", zIndex: "5" }}>
+            <div>
                 {searchResults && searchResults.map(res => {
                     return (
                         <Place style={theme ? { background: "rgba(128, 128, 128, 0.744)", color: "white" } : {}} key={crypto.randomUUID()} onClick={() => { getWeatherInfo([res.lat, res.lon]) }}>{res.name},{res.country}</Place>
@@ -52,7 +53,7 @@ export default function Home() {
                 })}
             </div>
 
-            <motion.div
+            {!searchResults.length && <motion.div
                 className={theme ? 'cardContainer light' : `cardContainer dark`}
                 initial={{ width: "50%" }}
                 animate={{ width: "100%" }}
@@ -63,7 +64,7 @@ export default function Home() {
                     <Card theme={theme} weatherInfo={weatherInfo} />
                 </div>
 
-            </motion.div>
+            </motion.div>}
 
         </>
     )

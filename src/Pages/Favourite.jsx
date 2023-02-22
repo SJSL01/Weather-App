@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom"
-
+import DataContext from '../Context/DataContext'
 export default function Favourite() {
 
+    const {setWeatherInfo} = useContext(DataContext)
 
     const data = []
 
